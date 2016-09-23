@@ -106,7 +106,7 @@
             $test_stylist->save();
             $test_stylist->update("Suzy");
 
-            $result = $test_stylist->getCuisineType();
+            $result = $test_stylist->getName();
 
             $this->assertEquals("Suzy", $result);
         }
