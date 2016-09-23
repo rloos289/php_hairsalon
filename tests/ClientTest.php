@@ -112,6 +112,23 @@
 
             $this->assertEquals("Lory", $result);
         }
+
+        function test_find_all_clients()
+        {
+            $stylist = "Suzanne";
+            $test_stylist = new Stylist($stylist);
+            $test_stylist->save();
+            $client1 = "Lauren";
+            $client2 = "Mitch";
+            $test_client1 = new Client($client1, 1);
+            $test_client1->save();
+            $test_client2 = new Client($client2, 1);
+            $test_client2->save();
+
+            $result = $test_stylist->clientSearch();
+
+            $this->assertEquals([$test_client1, $test_client2], $result);
+        }
    }
 
  ?>
