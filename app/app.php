@@ -1,7 +1,7 @@
 <?php
     date_default_timezone_set('America/Los_Angeles');
     require_once __DIR__."/../vendor/autoload.php";
-    require_once __DIR__."/../src/template.php";
+    require_once __DIR__."/../src/Stylist.php";
 
     //Epicodus
     $server = 'mysql:host=localhost;dbname=best_restaurants_test';
