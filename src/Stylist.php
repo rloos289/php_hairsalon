@@ -44,9 +44,14 @@
             return $stylist_array;
         }
 
-        static function deleteall()
+        static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylist;");
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id = {$this->getId()};");
         }
 
         static function find($search_id)
