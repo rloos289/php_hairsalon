@@ -120,9 +120,9 @@
             $test_stylist->save();
             $client1 = "Lauren";
             $client2 = "Mitch";
-            $test_client1 = new Client($client1, 1);
+            $test_client1 = new Client($client1, $test_stylist->getId());
             $test_client1->save();
-            $test_client2 = new Client($client2, 1);
+            $test_client2 = new Client($client2, $test_stylist->getId());
             $test_client2->save();
 
             $result = $test_stylist->clientSearch();

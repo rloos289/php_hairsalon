@@ -72,5 +72,19 @@
             $this->name = $name;
             $GLOBALS['DB']->exec("UPDATE stylist SET name = '{$this->name}' WHERE id = {$this->getId()};");
         }
+
+        function clientSearch()
+        {
+            $client_array = array();
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client WHERE stylist_id = {$this->getId()};");
+            foreach ($returned_clients as $client) {
+                $client_name = $client['name'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                $new_client = new Client ($client_name, $stylist_id, $id);
+                array_push($client_array, $new_client);
+            }
+            return $client_array;
+        }
     }
 ?>
