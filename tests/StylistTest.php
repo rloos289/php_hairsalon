@@ -6,6 +6,7 @@
     */
 
     require_once "src/Stylist.php";
+    require_once "src/Client.php";
 
     //Epicodus
     // $server = 'mysql:host=localhost;dbname=best_restaurants_test';
@@ -30,6 +31,7 @@
         protected function teardown()
         {
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function test_save()
