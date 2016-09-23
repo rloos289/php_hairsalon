@@ -14,7 +14,7 @@
     // $DB = new PDO($server, $username, $password);
 
     //home mac
-    $server = 'mysql:host=localhost:8889;dbname=best_restaurants';
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -27,6 +27,11 @@
     //then run phpunit tests
 
     {
+        protected function teardown()
+        {
+            Stylist::deleteAll();
+        }
+
         function test_save()
         {
             $stylist = "Suzan";
@@ -50,6 +55,21 @@
             $result = Stylist::getAll();
 
             $this->assertEquals([$test_stylist1, $test_stylist2], $result);
+        }
+
+        function delete_all()
+        {
+            $stylist1 = "Suzan";
+            $stylist2 = "Jacob";
+            $test_stylist1 = new Stylist($stylist1);
+            $test_stylist1->save();
+            $test_stylist2 = new Stylist($stylist2);
+            $test_stylist2->save();
+
+            Stylist::deleteAll();
+            $result = Stylist::deleteAll();
+
+            $this->assertEquals([], $result);
         }
    }
 
