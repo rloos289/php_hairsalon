@@ -34,7 +34,7 @@
 
         function test_save()
         {
-            $stylist = "Suzan";
+            $stylist = "Suzanne";
             $test_stylist = new Stylist($stylist);
             $test_stylist->save();
 
@@ -45,7 +45,7 @@
 
         function test_get_all()
         {
-            $stylist1 = "Suzan";
+            $stylist1 = "Suzanne";
             $stylist2 = "Jacob";
             $test_stylist1 = new Stylist($stylist1);
             $test_stylist1->save();
@@ -59,7 +59,7 @@
 
         function test_delete_all()
         {
-            $stylist1 = "Suzan";
+            $stylist1 = "Suzanne";
             $stylist2 = "Jacob";
             $test_stylist1 = new Stylist($stylist1);
             $test_stylist1->save();
@@ -74,7 +74,7 @@
 
         function test_find_stylist()
         {
-            $stylist1 = "Suzan";
+            $stylist1 = "Suzanne";
             $stylist2 = "Jacob";
             $test_stylist1 = new Stylist($stylist1);
             $test_stylist1->save();
@@ -88,7 +88,7 @@
 
         function test_delete_stylist()
         {
-            $stylist = "Suzan";
+            $stylist = "Suzanne";
             $test_stylist = new Stylist($stylist);
             $test_stylist->save();
             $id = $test_stylist->getId();
@@ -99,6 +99,17 @@
             $this->assertEquals(null, $result);
         }
 
+        function test_update()
+        {
+            $stylist = "Suzanne";
+            $test_stylist = new Stylist($stylist);
+            $test_stylist->save();
+            $test_stylist->update("Suzy");
+
+            $result = $test_stylist->getCuisineType();
+
+            $this->assertEquals("Suzy", $result);
+        }
    }
 
  ?>
