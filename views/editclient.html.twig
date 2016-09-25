@@ -9,5 +9,10 @@
       <input type="hidden" name="_method" value="delete">
       <button type="submit" name="button">delete this client</button>
     </form>
+    <form action="/editclient/{{ client.getId }}" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input type="text" name="client_name" value="">
+      <button type="submit" name="button">edit this client's name</button>
+    </form>
   </body>
 </html>

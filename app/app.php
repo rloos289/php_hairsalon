@@ -52,11 +52,20 @@
         $stylist = Stylist::find($client->getStylistId());
         return $app ['twig']->render("editclient.html.twig", array("clients" => Client::getAll(), 'client' => $client, 'stylist' => $stylist));
     });
-
+//----edit client info-----
     $app->delete('/editclient/{id}', function($id) use ($app) {
         $stylist = Stylist::find($id);
         $clients = $stylist->clientSearch();
         return $app ['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
+    });
+
+    $app->patch('/editclient/{id}', function($id) use ($app) {
+        $client = Client::find($id);
+        $new_client_name = $_POST['client_name'];
+        $client->update($new_client_name);
+        $stylist = Stylist::find($client->getStylistId());
+        $clients = $stylist->clientSearch();
+        return $app ['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $client, 'clients' => $clients));
     });
 
     // $app->delete('/client/{id}', function($id) use ($app) {
