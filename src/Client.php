@@ -22,7 +22,7 @@
             return $this->stylist_id;
         }
 
-        function getiD ()
+        function getId ()
         {
             return $this->id;
         }

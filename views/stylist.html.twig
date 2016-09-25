@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Styles</title>
+  </head>
+  <body>
+     <h1>Welcome to {{ stylist.getName}}'s page</h1>
+     {% if clients is not empty %}
+     <h3>client list:</h3>
+       {% for client in clients %}
+       <ul>
+        <li>{{client.getName}}</li>
+       </ul>
+     {% endfor %}
+     {% else %}
+     <p>{{ stylist.getName}} currently has no clients</p>
+     {% endif %}
+     <form action="/stylist/{{ stylist.getiD}}" method="post">
+        <label for="">client name: </label>
+        <input type="text" name="add_client" value="">
+        <button type="submit" name="button">add client</button>
+     </form>
+  </body>
+</html>

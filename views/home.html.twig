@@ -17,7 +17,7 @@
          <h2>Stylists</h2>
              <ul>
              {% for stylist in stylists %}
-                 <li> {{ stylist.getName }} </li>
+                 <li><a href='/stylist/{{ stylist.getiD}}'>{{ stylist.getName }}</a></li>
              {% endfor %}
          </ul>
      {% endif %}
