@@ -15,15 +15,13 @@
      {% else %}
      <p>{{ stylist.getName}} currently has no clients</p>
      {% endif %}
-     <form action="/stylist/{{ stylist.getiD}}" method="post">
+     <form action="/stylist/{{ stylist.getId }}" method="post">
         <label for="">client name: </label>
         <input type="text" name="add_client" value="">
         <button type="submit" name="button">add client</button>
      </form>
-     <a href="/stylist/{{ stylist.getiD}}"><button type="button" name="button">Home</button></a>
-     <form action="/stylist/{{ stylist.getId }}" method="post">
-       <input type="hidden" name="_method" value="delete">
-      <button type="submit" name="button">Delete this stylist</button>
+     <a href="/"><button type="button" name="button">Home</button></a>
+      <a href="/editstylist/{{ stylist.getId }}"><button type="button" name="button">Edit this stylist</button</a>
      </form>
   </body>
 </html>
