@@ -19,5 +19,10 @@
         <input type="text" name="add_client" value="">
         <button type="submit" name="button">add client</button>
      </form>
+     <a href="/"><button type="button" name="button">Home</button></a>
+     <form action="/stylist/{{ stylist.getId }}" method="post">
+       <input type="hidden" name="_method" value="delete">
+      <button type="submit" name="button">Delete this stylist</button>
+     </form>
   </body>
 </html>
