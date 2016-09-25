@@ -35,17 +35,37 @@
         return $app ['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    $app->get("/clear", function() use ($app) {
+        Stylist::deleteAll();
+        Client::deleteAll();
+        return $app['twig']->render("home.html.twig", array('stylists' => Stylist::getAll(), 'clients' => Client::getAll()));
+    });
+
     $app->delete('/stylist/{id}', function($id) use ($app) {
         $stylist = Stylist::find($id);
         $stylist->delete();
         return $app ['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-    $app->get("/clear", function() use ($app) {
-        Stylist::deleteAll();
-        Client::deleteAll();
-        return $app['twig']->render("home.html.twig", array('stylists' => Stylist::getAll(), 'clients' => Client::getAll()));
+    $app->get("/editclient/{id}", function ($id) use ($app) {
+        $client = Client::find($id);
+        $stylist = Stylist::find($client->getStylistId());
+        return $app ['twig']->render("editclient.html.twig", array("clients" => Client::getAll(), 'client' => $client, 'stylist' => $stylist));
     });
+
+    $app->delete('/editclient/{id}', function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $clients = $stylist->clientSearch();
+        return $app ['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
+    });
+
+    // $app->delete('/client/{id}', function($id) use ($app) {
+    //     $client = Client::find($id);
+    //     $stylist = Stylist::find($client->getStylistId());
+    //     $client->delete();
+    //     $clients = $stylist->clientSearch();
+    //     return $app ['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
+    // });
 
     $app->get("/stylist/{id}", function($id) use ($app) {
         $stylist_id = Stylist::find($id);
@@ -62,8 +82,6 @@
         $clients = $stylist->clientSearch();
         return $app ['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
     });
-
-
 
     return $app;
 ?>
