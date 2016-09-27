@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Client profile: {{ client.getName }}</h1>
-    <form action="/stylist/{{ stylist.getiD}}" method="post">
+    <form action="/editclient/{{ client.getiD }}" method="post">
       <input type="hidden" name="_method" value="delete">
       <button type="submit" name="button">delete this client</button>
     </form>

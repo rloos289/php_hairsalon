@@ -9,7 +9,7 @@
     require_once "src/Client.php";
 
     //Epicodus
-    // $server = 'mysql:host=localhost;dbname=best_restaurants_test';
+    // $server = 'mysql:host=localhost;dbname=hair_salon_test';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
@@ -21,11 +21,6 @@
     $DB = new PDO($server, $username, $password);
 
     class ClientTest extends PHPUnit_Framework_TestCase
-
-    //run test in terminal: ./vendor/bin/phpunit tests
-
-    //on Mac: run: export PATH=$PATH:./vendor/bin
-    //then run phpunit tests
 
     {
         protected function teardown()
