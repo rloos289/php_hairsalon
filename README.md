@@ -11,8 +11,8 @@
 * _Create a database by running the following commands in terminal_
 * _-CREATE DATABASE hair_salon;_
 * _-USE hair_salon;_
-* _-CREATE TABLE stylist (id serial PRIMARY KEY, name VARCHAR (255));_
-* _-CREATE TABLE client (id serial PRIMARY KEY, name VARCHAR (255), stylist_id INT);_
+* _-CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR (255));_
+* _-CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR (255), stylist_id INT);_
 * _start an apache server_
 * _start a server in web directory (php -S localhost:8000)_
 

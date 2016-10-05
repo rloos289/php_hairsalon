@@ -4,7 +4,7 @@
     require_once __DIR__."/../src/Stylist.php";
     require_once __DIR__."/../src/Client.php";
 
-    $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);

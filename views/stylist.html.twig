@@ -1,27 +1,37 @@
 <html>
   <head>
+    <link href='/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='/css/styles.css' rel='stylesheet' type='text/css'>
     <title>Styles</title>
   </head>
   <body>
-     <h1>Welcome to {{ stylist.getName}}'s page</h1>
-     {% if clients is not empty %}
-     <h3>client list:</h3>
-       {% for client in clients %}
-       <ul>
-        <li>{{client.getName}}
-         <a href="/editclient/{{ client.getId }}"<button type="button" name="button">Edit this clients information</button></a></li>
-       </ul>
-     {% endfor %}
-     {% else %}
-     <p>{{ stylist.getName}} currently has no clients</p>
-     {% endif %}
-     <form action="/stylist/{{ stylist.getId }}" method="post">
-        <label for="">client name: </label>
-        <input type="text" name="add_client" value="">
-        <button type="submit" name="button">add client</button>
-     </form>
-     <a href="/"><button type="button" name="button">Home</button></a>
-      <a href="/editstylist/{{ stylist.getId }}"><button type="button" name="button">Edit this stylist</button</a>
-     </form>
+    <h1>Welcome to {{ stylist.getName}}'s page</h1>
+    <div class="container">
+        <div class="col-md-6">
+            <h3>stylist information</h3>
+            <form action="/stylist/{{ stylist.getId }}" method="post">
+                <label for="">client name: </label>
+                <input type="text" name="add_client" value="">
+                <br>
+                <button type="submit" name="button" class="btn btn-info">add client</button>
+                <br>
+                <a href="/editstylist/{{ stylist.getId }}"><button type="button" name="button" class="btn btn-info">Edit this stylist</button</a>
+                <a href="/"><button type="button" name="button" class="btn btn-primary" >Home</button></a>
+            </form>
+            </br>
+        </div>
+        <div class="col-md-6">
+            {% if clients is not empty %}
+                <h3>client list:</h3>
+                {% for client in clients %}
+                <ul>
+                    <li>{{client.getName}}<a href="/editclient/{{ client.getId }}"<button type="button" name="button" class="btn btn-success">Edit this clients information</button></a></li>
+               </ul>
+                {% endfor %}
+            {% else %}
+                <p>{{ stylist.getName}} currently has no clients</p>
+            {% endif %}
+        </div>
+    </div>
   </body>
 </html>

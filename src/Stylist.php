@@ -27,13 +27,13 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO stylist (name) VALUES ('{$this->getName()}')");
+            $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getName()}')");
             $this->id= $GLOBALS['DB']->lastInsertId();
         }
 
         static function getAll()
         {
-            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylist;");
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
             $stylist_array = array();
             foreach ($returned_stylists as $stylist) {
                 $stylist_name = $stylist['name'];
@@ -46,12 +46,12 @@
 
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM stylist;");
+            $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
 
         function delete()
         {
-            $GLOBALS['DB']->exec("DELETE FROM stylist WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
         }
 
         static function find($search_id)
@@ -70,13 +70,13 @@
         function update($name)
         {
             $this->name = $name;
-            $GLOBALS['DB']->exec("UPDATE stylist SET name = '{$this->name}' WHERE id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$this->name}' WHERE id = {$this->getId()};");
         }
 
         function clientSearch()
         {
             $client_array = array();
-            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM client WHERE stylist_id = {$this->getId()};");
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
             foreach ($returned_clients as $client) {
                 $client_name = $client['name'];
                 $stylist_id = $client['stylist_id'];
